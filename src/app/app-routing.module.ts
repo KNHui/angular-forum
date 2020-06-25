@@ -15,6 +15,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'firestore',
+    loadChildren: () => import('./firestore/firestore.module').then( m => m.FirestorePageModule)
+  },
 ];
 
 @NgModule({
