@@ -29,3 +29,12 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+
+
+### Firebase ###
+.idea
+.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
