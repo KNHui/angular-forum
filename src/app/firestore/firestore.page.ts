@@ -11,14 +11,11 @@ export class FirestorePage /*implements OnInit*/ {
   postSubject: string;
   postContent: string;
   postDate: string;
-  constructor(private crudService: CrudService) {
-    console.log("firestore.page.ts - constructor(...) 1");
-  }
+  constructor(private crudService: CrudService) {}
 
   ngOnInit() {
     console.log("firestore.page.ts - ngOnInit() 1");
     this.crudService.readPost().subscribe((data) => {
-      console.log("firestore.page.ts - ngOnInit() 2");
       this.posts = data.map((e) => {
         return {
           id: e.payload.doc.id,
@@ -28,7 +25,7 @@ export class FirestorePage /*implements OnInit*/ {
           isEdit: false,
         };
       });
-      console.log(this.posts);
+      console.log("firestore.page.ts - ngOnInit() 2 - this.posts" + this.posts);
     });
   }
 
