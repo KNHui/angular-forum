@@ -7,19 +7,19 @@ import { AngularFirestore } from "@angular/fire/firestore";
 export class CrudService {
   constructor(private firestore: AngularFirestore) {}
 
-  create_Post(record) {
+  createPost(record) {
     return this.firestore.collection("post").add(record);
   }
 
-  read_Post() {
+  readPost() {
     return this.firestore.collection("post").snapshotChanges();
   }
 
-  update_Post(recordID, record) {
+  updatePost(recordID, record) {
     this.firestore.doc("post/" + recordID).update(record);
   }
 
-  delete_Post(recordID) {
+  deletePost(recordID) {
     this.firestore.doc("post/" + recordID).delete();
   }
 }

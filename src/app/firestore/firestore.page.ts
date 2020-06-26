@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component /*TODO , OnInit*/ } from "@angular/core";
 import { CrudService } from "../crud.service";
 
 @Component({
@@ -6,15 +6,19 @@ import { CrudService } from "../crud.service";
   templateUrl: "./firestore.page.html",
   styleUrls: ["./firestore.page.scss"],
 })
-export class FirestorePage implements OnInit {
+export class FirestorePage /*implements OnInit*/ {
   posts: any;
   postSubject: string;
   postContent: string;
   postDate: string;
-  constructor(private crudService: CrudService) {}
+  constructor(private crudService: CrudService) {
+    console.log("firestore.page.ts - constructor(...) 1");
+  }
 
   ngOnInit() {
-    this.crudService.read_Post().subscribe((data) => {
+    console.log("firestore.page.ts - ngOnInit() 1");
+    this.crudService.readPost().subscribe((data) => {
+      console.log("firestore.page.ts - ngOnInit() 2");
       this.posts = data.map((e) => {
         return {
           id: e.payload.doc.id,
@@ -34,7 +38,7 @@ export class FirestorePage implements OnInit {
     record["content"] = this.postContent;
     record["date"] = this.postDate;
     this.crudService
-      .create_Post(record)
+      .createPost(record)
       .then((resp) => {
         this.postSubject = "";
         this.postContent = "";
@@ -47,7 +51,7 @@ export class FirestorePage implements OnInit {
   }
 
   RemoveRecord(recordID) {
-    this.crudService.delete_Post(recordID);
+    this.crudService.deletePost(recordID);
   }
 
   EditRecord(record) {
@@ -62,7 +66,7 @@ export class FirestorePage implements OnInit {
     record["subject"] = recordRow.editSubject;
     record["content"] = recordRow.editContent;
     record["date"] = recordRow.editDate;
-    this.crudService.update_Post(recordRow.id, record);
+    this.crudService.updatePost(recordRow.id, record);
     recordRow.isEdit = false;
   }
 }

@@ -9,12 +9,13 @@ import { environment, snapshotToArray } from "../../environments/environment";
   templateUrl: "home.page.html",
   styleUrls: ["home.page.scss"],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   item = [];
   ref = firebase.database().ref("os/");
 
   constructor(private data: DataService) {
     this.ref.on("value", (res) => {
+      console.log("home.page.ts - constructor(...) 1");
       console.log(snapshotToArray(res));
     });
   }
