@@ -1,5 +1,5 @@
 import { Component /*TODO , OnInit*/ } from "@angular/core";
-import { CrudService } from "../crud.service";
+import { CrudService } from "../services/crud.service";
 
 @Component({
   selector: "app-firestore",
@@ -10,7 +10,6 @@ export class FirestorePage /*implements OnInit*/ {
   posts: any;
   postSubject: string;
   postContent: string;
-  postDate: string;
   constructor(private crudService: CrudService) {}
 
   ngOnInit() {
@@ -33,13 +32,13 @@ export class FirestorePage /*implements OnInit*/ {
     let record = {};
     record["subject"] = this.postSubject;
     record["content"] = this.postContent;
-    record["date"] = this.postDate;
+    record["date"] = new Date().getTime();
+    record["postWriter"] = "Nami";
     this.crudService
       .createPost(record)
       .then((resp) => {
         this.postSubject = "";
         this.postContent = "";
-        this.postDate = "";
         console.log(resp);
       })
       .catch((error) => {
@@ -55,14 +54,12 @@ export class FirestorePage /*implements OnInit*/ {
     record.isEdit = true;
     record.editSubject = record.subject;
     record.editContent = record.content;
-    record.editDate = record.date;
   }
 
   UpdateRecord(recordRow) {
     let record = {};
     record["subject"] = recordRow.editSubject;
     record["content"] = recordRow.editContent;
-    record["date"] = recordRow.editDate;
     this.crudService.updatePost(recordRow.id, record);
     recordRow.isEdit = false;
   }

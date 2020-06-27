@@ -1,77 +1,86 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 export interface Message {
-  fromName: string;
   subject: string;
+  writer: string;
+  content: string;
   date: string;
   id: number;
   read: boolean;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class DataService {
   public messages: Message[] = [
     {
-      fromName: 'Matt Chorsey',
-      subject: 'New event: Trip to Vegas',
-      date: '9:32 AM',
+      subject: "Matt Chorsey",
+      writer: "New event: Trip to Vegas",
+      content: "wow",
+      date: "9:32 AM",
       id: 0,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Lauren Ruthford',
-      subject: 'Long time no chat',
-      date: '6:12 AM',
+      subject: "Lauren Ruthford",
+      writer: "Long time no chat",
+      content: "wow",
+      date: "6:12 AM",
       id: 1,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Jordan Firth',
-      subject: 'Report Results',
-      date: '4:55 AM',
+      subject: "Jordan Firth",
+      writer: "Report Results",
+      content: "wow",
+      date: "4:55 AM",
       id: 2,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Bill Thomas',
-      subject: 'The situation',
-      date: 'Yesterday',
+      subject: "Bill Thomas",
+      writer: "The situation",
+      content: "wow",
+      date: "Yesterday",
       id: 3,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Joanne Pollan',
-      subject: 'Updated invitation: Swim lessons',
-      date: 'Yesterday',
+      subject: "Joanne Pollan",
+      writer: "Updated invitation: Swim lessons",
+      content: "wow",
+      date: "Yesterday",
       id: 4,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Andrea Cornerston',
-      subject: 'Last minute ask',
-      date: 'Yesterday',
+      subject: "Andrea Cornerston",
+      writer: "Last minute ask",
+      content: "wow",
+      date: "Yesterday",
       id: 5,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Moe Chamont',
-      subject: 'Family Calendar - Version 1',
-      date: 'Last Week',
+      subject: "Moe Chamont",
+      writer: "Family Calendar - Version 1",
+      content: "wow",
+      date: "Last Week",
       id: 6,
-      read: false
+      read: false,
     },
     {
-      fromName: 'Kelly Richardson',
-      subject: 'Placeholder Headhots',
-      date: 'Last Week',
+      subject: "Kelly Richardson",
+      writer: "Placeholder Headhots",
+      content: "wow",
+      date: "Last Week",
       id: 7,
-      read: false
-    }
+      read: false,
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
   public getMessages(): Message[] {
     return this.messages;

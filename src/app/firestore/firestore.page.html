@@ -23,20 +23,12 @@
           ></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-input
-            placeholder="Enter Date"
-            [(ngModel)]="postDate"
-          ></ion-input>
-        </ion-item>
-      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
         <ion-button
           (click)="CreateRecord()"
-          [disabled]="!postSubject || !postContent || !postDate"
+          [disabled]="!postSubject || !postContent"
         >
           <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
           &nbsp;Create Record
