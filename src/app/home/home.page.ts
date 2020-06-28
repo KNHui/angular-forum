@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
-import { DataService, Message } from "../services/data.service";
+import { DataService, Post } from "../services/data.service";
 
 import * as firebase from "firebase";
 import { environment, snapshotToArray } from "../../environments/environment";
+import { PostComponent } from "../post/post.component";
 
 @Component({
   selector: "app-home",
@@ -10,13 +11,31 @@ import { environment, snapshotToArray } from "../../environments/environment";
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  item = [];
+  posts: Post[];
+  postSubject: string;
+  postContent: string;
   ref = firebase.database().ref("os/");
+  tmp: Post;
 
-  constructor(private data: DataService) {
+  constructor(private dataService: DataService) {
     this.ref.on("value", (res) => {
-      console.log("home.page.ts - constructor(...) 1");
       console.log(snapshotToArray(res));
+    });
+  }
+
+  ngOnInit() {
+    this.dataService.readPosts().subscribe((record) => {
+      this.posts = record.map((e) => {
+        return <Post>{
+          id: e.payload.doc.data()["id"],
+          subject: e.payload.doc.data()["subject"],
+          content: e.payload.doc.data()["content"],
+          date: e.payload.doc.data()["date"],
+          isRead: false,
+          writer: e.payload.doc.data()["writer"],
+        };
+      });
+      this.dataService.posts = this.posts;
     });
   }
 
@@ -24,9 +43,5 @@ export class HomePage {
     setTimeout(() => {
       ev.detail.complete();
     }, 3000);
-  }
-
-  getMessages(): Message[] {
-    return this.data.getMessages();
   }
 }

@@ -11,7 +11,7 @@
     href="http://localhost:8100/firestore"
     title="firestore test page"
     target="_self"
-    >firestore</a
+    >write</a
   >
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
@@ -26,9 +26,6 @@
   </ion-header>
 
   <ion-list>
-    <app-message
-      *ngFor="let message of getMessages()"
-      [message]="message"
-    ></app-message>
+    <app-post *ngFor="let post of posts" [post]="post"></app-post>
   </ion-list>
 </ion-content>

@@ -12,8 +12,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 
-import { CrudService } from "./crud.service";
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -21,13 +19,12 @@ import { CrudService } from "./crud.service";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase_config),
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    CrudService,
   ],
   bootstrap: [AppComponent],
 })

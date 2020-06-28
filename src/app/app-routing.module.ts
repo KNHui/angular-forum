@@ -8,9 +8,9 @@ const routes: Routes = [
       import("./home/home.module").then((m) => m.HomePageModule),
   },
   {
-    path: "message/:id",
+    path: "post/:id",
     loadChildren: () =>
-      import("./view-message/view-message.module").then(
+      import("./view-post/view-post.module").then(
         (m) => m.ViewMessagePageModule
       ),
   },
