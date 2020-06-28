@@ -13,7 +13,6 @@ export class FirestorePage /*implements OnInit*/ {
   constructor(private crudService: CrudService) {}
 
   ngOnInit() {
-    console.log("firestore.page.ts - ngOnInit() 1");
     this.crudService.readPost().subscribe((data) => {
       this.posts = data.map((e) => {
         return {
@@ -24,7 +23,6 @@ export class FirestorePage /*implements OnInit*/ {
           isEdit: false,
         };
       });
-      console.log("firestore.page.ts - ngOnInit() 2 - this.posts" + this.posts);
     });
   }
 

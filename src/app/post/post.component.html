@@ -1,0 +1,20 @@
+<ion-item *ngIf="post" [routerLink]="'/post/' + post.id" [detail]="false">
+  <div slot="start" [class]="!post.read ? 'dot dot-unread' : 'dot'"></div>
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ post.subject }}
+      <span class="date">
+        <ion-note>{{ post.date.toDate() | date: "yyyy/MM/dd hh:mm" }}</ion-note>
+        <ion-icon
+          name="chevron-forward"
+          size="small"
+          *ngIf="isIos()"
+        ></ion-icon>
+      </span>
+    </h2>
+    <h3>{{ post.writer }}</h3>
+    <p>
+      {{ post.content }}
+    </p>
+  </ion-label>
+</ion-item>

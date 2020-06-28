@@ -9,23 +9,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" *ngIf="message">
+<ion-content [fullscreen]="true" *ngIf="post">
   <ion-item>
     <ion-icon name="person-circle" color="primary"></ion-icon>
     <ion-label class="ion-text-wrap">
       <h2>
-        {{ message.subject }}
+        {{ post.subject }}
         <span class="date">
-          <ion-note>{{ message.date }}</ion-note>
+          <ion-note
+            >{{ post.date.toDate() | date: "yyyy/MM/dd hh:mm:ss" }}</ion-note
+          >
         </span>
       </h2>
-      <h3>{{ message.writer }}</h3>
+      <h3>{{ post.writer }}</h3>
     </ion-label>
   </ion-item>
 
   <div class="ion-padding">
     <p>
-      {{ message.content }}
+      {{ post.content }}
     </p>
   </div>
 </ion-content>
