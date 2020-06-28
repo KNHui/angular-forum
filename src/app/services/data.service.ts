@@ -24,7 +24,9 @@ export class DataService {
 
   //public readPost(): Message[] {
   public readPosts() {
-    return this.firestore.collection<Post>("post").snapshotChanges();
+    return this.firestore
+      .collection<Post>("post", (ref) => ref.orderBy("date"))
+      .snapshotChanges();
   }
 
   public getPostById(id: number): Post {

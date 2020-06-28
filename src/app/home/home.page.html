@@ -7,12 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <a
-    href="http://localhost:8100/firestore"
-    title="firestore test page"
-    target="_self"
-    >write</a
+  <ion-button
+    id="writeButton"
+    shape="round"
+    color="secondary"
+    size="small"
+    (click)="goToWrite()"
   >
+    <ion-icon size="small" slot="icon-only" name="create"></ion-icon>write
+  </ion-button>
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -29,3 +32,10 @@
     <app-post *ngFor="let post of posts" [post]="post"></app-post>
   </ion-list>
 </ion-content>
+
+<style>
+  #writeButton {
+    margin-top: 15px;
+    margin-left: 17px;
+  }
+</style>

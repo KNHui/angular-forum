@@ -12,7 +12,9 @@ export class CrudService {
   }
 
   readPost() {
-    return this.firestore.collection("post").snapshotChanges();
+    return this.firestore
+      .collection("post", (ref) => ref.orderBy("date"))
+      .snapshotChanges();
   }
 
   updatePost(recordID, record) {

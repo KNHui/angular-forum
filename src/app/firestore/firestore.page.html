@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Firestore</ion-title>
+    <ion-title> <a href="http://localhost:8100/home">Home</a> </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,15 +23,23 @@
           ></ion-input>
         </ion-item>
       </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            placeholder="Enter Writer"
+            [(ngModel)]="postWriter"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
         <ion-button
           (click)="CreateRecord()"
-          [disabled]="!postSubject || !postContent"
+          [disabled]="!postSubject || !postContent || !postWriter"
         >
           <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
-          &nbsp;Create Record
+          &nbsp;Write Post
         </ion-button>
       </ion-col>
     </ion-row>
@@ -105,10 +113,6 @@
         <ion-item>
           <ion-label><strong>Content</strong></ion-label>
           <ion-input type="text" [(ngModel)]="item.editContent"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Date</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.editDate"></ion-input>
         </ion-item>
       </ion-card-content>
     </ng-template>
