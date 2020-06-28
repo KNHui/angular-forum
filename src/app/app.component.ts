@@ -13,7 +13,6 @@ import { environment } from "../environments/environment";
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
-  items: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -27,6 +26,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    firebase.initializeApp(environment.firebaseConfig);
+    firebase.initializeApp(environment.firebase_config);
   }
 }
