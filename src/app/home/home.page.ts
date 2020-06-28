@@ -44,4 +44,8 @@ export class HomePage {
       ev.detail.complete();
     }, 3000);
   }
+
+  goToWrite() {
+    location.href = "http://localhost:8100/firestore";
+  }
 }
